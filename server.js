@@ -1,10 +1,12 @@
-const express = require("express");
-const app = express();
-const port = 3000;
+import app from "./src/app.js";
+import dotenv from "dotenv";
 
-app.get('/', (req, res) =>{
-  res.status(200).json({msg:"Welcome back!"});
-});
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
+dotenv.config();
+
+const port = process.env.PORT || 3000;
+
+(async() => {
+  app.listen(port, () => {
+    console.log(`Server running at http://localhost:${port}`);
+  });
+})();
